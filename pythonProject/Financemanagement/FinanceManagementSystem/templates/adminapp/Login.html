@@ -1,0 +1,41 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="../../static/cssFiles/Login.css">
+</head>
+<body>
+
+<ul  class="navbar-nav ms-auto">
+<li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+        <span class="nav-link">Welcome, {{ user.username }}</span>
+    </li>
+          <li class="nav-item">
+          <a class="nav-link" href="#">Logout</a>
+          </li>
+        {% else %}
+
+        {% endif %}
+
+ </li>
+
+      </ul>
+<center>
+<div class="container">
+    <div class="heading">Sign In</div>
+    <form action="{% url 'UserLoginLogic' %}" class="form" method="post">
+        {% csrf_token %}
+      <input required="" class="input" name="username" type="text"  id="email" placeholder="Username">
+      <input required="" class="input" name="password" type="password"  id="password" placeholder="Password">
+      <span class="forgot-password"><a href="#">Forgot Password ?</a></span>
+      <input class="login-button" type="submit" value="Sign In">
+
+    </form>
+  </div>
+    </center>
+
+</body>
+</html>
