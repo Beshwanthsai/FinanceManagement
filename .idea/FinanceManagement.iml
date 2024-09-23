@@ -17,7 +17,7 @@
       <sourceFolder url="file://$MODULE_DIR$/pythonProject/Financemanagement/FinanceManagementSystem" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/pythonProject/.venv" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.12 (PFSDPythonProject)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">

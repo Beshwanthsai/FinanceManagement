@@ -3,16 +3,18 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
-# Create your views here.
-def homepagecall(request):
-    return render(request,'adminapp/projecthomepage.html')
-
-def UserLoginPageCall(request):
-    return render(request, 'adminapp/Login.html')
 from django.contrib import messages, auth
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 
+
+# Create your views here.
+def homepagecall(request):
+    return render(request, 'adminapp/projecthomepage.html')
+
+
+def UserLoginPageCall(request):
+    return render(request, 'adminapp/Login.html')
 
 
 def UserLoginLogic(request):
@@ -22,14 +24,14 @@ def UserLoginLogic(request):
 
         # Authenticate the user
         user = authenticate(request, username=username, password=password)
-        auth.login(request,user)
+        auth.login(request, user)
         if user is not None:
             # Check the length of the username
             if len(username) == 10:
                 # Redirect to StudentHomePage
                 messages.success(request, 'Login successful as Beshwanth Sai Katari!')
                 return redirect('studentapp:StudentHomePage')  # Replace with your student homepage URL name
-            elif len(username) ==4 :
+            elif len(username) == 4:
                 # Redirect to FacultyHomePage
                 messages.success(request, 'Login successful as user!')
                 return redirect('facultyapp:FacultyHomePage')  # Replace with your faculty homepage URL name
@@ -43,6 +45,7 @@ def UserLoginLogic(request):
             return render(request, 'adminapp/Login.html')
     else:
         return render(request, 'adminapp/Login.html')
+
 
 def UserRegisterPageCall(request):
     return render(request, 'adminapp/Register.html')
@@ -92,11 +95,11 @@ from .models import Expense
 from .forms import ExpenseForm
 
 
-
 def expense_listpagecall(request):
     return render(request, 'adminapp/expense_list.html')
-# View to display all expenses
 
+
+# View to display all expenses
 
 
 def expense_list(request):
@@ -105,14 +108,11 @@ def expense_list(request):
     return render(request, 'adminapp/expense_list.html', {'expenses': expenses, 'total_expense': total_expense})
 
 
-
-
-
 def add_expensepagecall(request):
     return render(request, 'adminapp/add_expense.html')
+
+
 # View to handle new expense creation
-
-
 
 
 def add_expense(request):
@@ -127,12 +127,11 @@ def add_expense(request):
     return render(request, 'adminapp/add_expense.html', {'form': form})
 
 
-
-
 def delete_expensepagecall(request):
     return render(request, 'adminapp/delete_expense.html')
-# View to delete an expense
 
+
+# View to delete an expense
 
 
 def delete_expense(request, pk):
