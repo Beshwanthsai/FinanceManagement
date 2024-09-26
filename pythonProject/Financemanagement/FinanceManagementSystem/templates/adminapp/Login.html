@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="../../static/cssFiles/Login.css">
+    <title>Title</title>
+     <link rel="stylesheet" href="../../static/cssFiles/Login.css">
 </head>
 <body>
 
@@ -26,7 +26,7 @@
 <center>
 <div class="container">
     <div class="heading">Sign In</div>
-    <form action="{% url 'UserLoginLogic' %}" class="form" method="post">
+{#    <form action="{% url 'UserLoginLogic' %}" class="form" method="post">#}
         {% csrf_token %}
       <input required="" class="input" name="username" type="text"  id="email" placeholder="Username">
       <input required="" class="input" name="password" type="password"  id="password" placeholder="Password">
@@ -34,6 +34,15 @@
       <input class="login-button" type="submit" value="Sign In">
 
     </form>
+    {% if messages %}
+        <ul class="messages" style="list-style-type: none; padding: 0; margin: 20px 0 0; font-size: 14px;">
+            {% for message in messages %}
+                <li class="{{ message.tags }}" style="padding: 10px; border: 1px solid; border-radius: 3px; margin-bottom: 10px;">
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
   </div>
     </center>
 

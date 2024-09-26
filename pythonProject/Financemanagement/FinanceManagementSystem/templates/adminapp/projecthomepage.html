@@ -69,10 +69,10 @@
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><b>Register</b></a>
+                        <a class="nav-link" href="{% url 'Registerpagecall' %}"><b>Register</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><b>Login</b></a>
+                        <a class="nav-link" href="{% url 'Loginpagecall' %}"><b>Login</b></a>
                     </li>
                 {% endif %}
             </ul>
