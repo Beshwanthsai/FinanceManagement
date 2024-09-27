@@ -1,18 +1,15 @@
-from django.contrib.auth.context_processors import auth
+
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
-
 
 # Create your views here.
 def homepagecall(request):
     return render(request, 'adminapp/projecthomepage.html')
 
 def Loginpagecall(request):
-    return render(request,'adminapp/Login.html')
-
-
+    return render(request, 'adminapp/Login.html')
 
 def UserLoginLogic(request):
     if request.method == 'POST':
@@ -21,16 +18,16 @@ def UserLoginLogic(request):
 
         # Authenticate the user
         user = authenticate(request, username=username, password=password)
-        auth.login(request,user)
         if user is not None:
+            login(request, user)
             # Check the length of the username
             if len(username) == 10:
                 # Redirect to StudentHomePage
-                messages.success(request, 'Login successful as student!')
-                return redirect('adminapp:projecthomepage')  # Replace with your student homepage URL name
+                messages.success(request, 'Login successful as User!')
+                return redirect('UserApp:userhomepage')  # Replace with your student homepage URL name
             elif len(username) == 4:
                 # Redirect to FacultyHomePage
-                messages.success(request, 'Login successful as faculty!')
+                messages.success(request, 'Login successful as Finance Manager!')
                 return redirect('adminapp:projecthomepage')  # Replace with your faculty homepage URL name
             else:
                 # Invalid username length
@@ -43,12 +40,8 @@ def UserLoginLogic(request):
     else:
         return render(request, 'adminapp/Login.html')
 
-
 def Registerpagecall(request):
-    return render(request,'adminapp/Register.html')
-
-
-
+    return render(request, 'adminapp/Register.html')
 
 def UserRegisterLogic(request):
     if request.method == 'POST':
@@ -82,3 +75,7 @@ def UserRegisterLogic(request):
             return render(request, 'adminapp/Register.html')
     else:
         return render(request, 'adminapp/Register.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('homepagecall')
