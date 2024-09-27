@@ -24,11 +24,11 @@ def UserLoginLogic(request):
             if len(username) == 10:
                 # Redirect to StudentHomePage
                 messages.success(request, 'Login successful as User!')
-                return redirect('UserApp:userhomepage')  # Replace with your student homepage URL name
+                return redirect('UserApp:userhomepage')
             elif len(username) == 4:
                 # Redirect to FacultyHomePage
                 messages.success(request, 'Login successful as Finance Manager!')
-                return redirect('adminapp:projecthomepage')  # Replace with your faculty homepage URL name
+                return redirect('UserApp:userhomepage')
             else:
                 # Invalid username length
                 messages.error(request, 'Username length does not match student or faculty criteria.')
