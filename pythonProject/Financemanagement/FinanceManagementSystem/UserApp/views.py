@@ -6,3 +6,6 @@ def userhomepagecall(request):
 
 def balancecheckpagecall(request):
     return render(request,'UserApp/checkBalance.html')
+
+def addexpensepagecall(request):
+    return render(request,'UserApp/AddExpense.html')
