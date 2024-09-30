@@ -9,7 +9,7 @@
   justify-content: end;
   padding: 12px;
   gap: 12px;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   color: white;
 }
@@ -18,11 +18,12 @@
   content: '';
   position: absolute;
   inset: 0;
-  left: -5px;
+  left: -10px;
+  right: -10px;
   margin: auto;
   width: 200px;
   height: 264px;
-  border-radius: 10px;
+  border-radius: 20px;
   background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100% );
   z-index: -10;
   pointer-events: none;
@@ -61,4 +62,25 @@
 .card:hover::before {
   transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
 }
+
+/* From Uiverse.io by KhelVers */
+.button {
+  cursor: pointer;
+  font-size: large;
+  font-family: inherit;
+  font-weight: bold;
+  color: #0011ff;
+  background-color: #f8f8fd;
+  padding: 0.8em 2.2em;
+  border-radius: 50em;
+  border: 6px solid #8b93f8;
+  box-shadow: 0px 8px #1f35ff ;
+}
+.button:active {
+  position: relative;
+  top: 8px;
+  border: 6px solid #646fff;
+  box-shadow: 0px 0px;
+}
+
 
