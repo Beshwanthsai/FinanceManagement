@@ -59,7 +59,9 @@
 <div class="bg-container d-flex flex-row">
     <div class="card m-4">
   <p class="heading">
-  <button class="button" href="#">Add Expense</button>
+      <a class="dropdown-item" href="{% url 'UserApp:addexpensepagecall' %}"><button class="button" >Add 
+          Expense</button></a>
+  
   </p>
   </div>
     <br>
@@ -69,7 +71,7 @@
     <br>
     <div class="card m-4">
   <p class="heading">
-    <button class="button">Check Balance</button>
+     <a class="dropdown-item" href="#"><button class="button" >Check Balance</button></a>
   </p>
   </div>
      <br>
@@ -79,8 +81,7 @@
     <br>
     <div class="card m-4">
   <p class="heading">
-    <button class="button">Expense Tracker</button>
-  </p>
+     <a class="dropdown-item" href="#"><button class="button" >Delete expense</button></a>
   </div>
      <br>
     <br>
