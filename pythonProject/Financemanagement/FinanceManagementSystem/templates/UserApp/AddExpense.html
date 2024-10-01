@@ -1,14 +1,32 @@
+<!-- AddExpense.html -->
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="{% static 'container.css' %}">
+    <title>Add Expense</title>
 </head>
 <body>
-<div class="Rap">
-<h1>This is add Expense page</h1>
-</div>
+{% block body %}
+{% endblock %}
+    <h1>Add Expense</h1>
+    <form method="post" action="{% url 'UserApp:add_expense' %}">
+        {% csrf_token %}
+        <label for="id_amount">Amount:</label>
+        <input type="text" name="amount" id="id_amount"><br>
+
+        <label for="id_category">Category:</label>
+        <select name="category" id="id_category">
+            {% for category in form.fields.category.queryset %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="id_date">Date:</label>
+        <input type="date" name="date" id="id_date"><br>
+
+        <label for="id_description">Description:</label>
+        <textarea name="description" id="id_description"></textarea><br>
+
+        <button type="submit">Add Expense</button>
+    </form>
 </body>
 </html>
