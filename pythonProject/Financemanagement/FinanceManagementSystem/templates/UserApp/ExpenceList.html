@@ -1,3 +1,4 @@
+<!-- ExpenceList.html -->
 {% load static %}
 <html>
 <head>
@@ -5,12 +6,28 @@
 </head>
 <body>
 {% block body %}
+
     <h1>Expense List</h1>
-    <ul>
-        {% for expense in expenses %}
-            <li>{{ expense.date }} - {{ expense.category.name }} - {{ expense.amount }} - {{ expense.description }}</li>
-        {% endfor %}
-    </ul>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+                <tr>
+                    <td>{{ expense.amount }}</td>
+                    <td>{{ expense.category }}</td>
+                    <td>{{ expense.date }}</td>
+                    <td>{{ expense.description }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
 </body>
 </html>

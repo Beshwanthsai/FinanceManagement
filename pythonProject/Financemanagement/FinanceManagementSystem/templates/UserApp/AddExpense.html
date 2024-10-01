@@ -10,21 +10,8 @@
     <h1>Add Expense</h1>
     <form method="post" action="{% url 'UserApp:add_expense' %}">
         {% csrf_token %}
-        <label for="id_amount">Amount:</label>
-        <input type="text" name="amount" id="id_amount"><br>
-
-        <label for="id_category">Category:</label>
-        <select name="category" id="id_category">
-            {% for category in form.fields.category.queryset %}
-                <option value="{{ category.id }}">{{ category.name }}</option>
-            {% endfor %}
-        </select><br>
-
-        <label for="id_date">Date:</label>
-        <input type="date" name="date" id="id_date"><br>
-
-        <label for="id_description">Description:</label>
-        <textarea name="description" id="id_description"></textarea><br>
+        {{ form.as_p }}
+        
 
         <button type="submit">Add Expense</button>
     </form>
