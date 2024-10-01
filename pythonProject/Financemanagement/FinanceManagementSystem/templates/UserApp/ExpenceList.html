@@ -1,0 +1,16 @@
+{% load static %}
+<html>
+<head>
+    <title>Expense List</title>
+</head>
+<body>
+{% block body %}
+    <h1>Expense List</h1>
+    <ul>
+        {% for expense in expenses %}
+            <li>{{ expense.date }} - {{ expense.category.name }} - {{ expense.amount }} - {{ expense.description }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+</body>
+</html>
