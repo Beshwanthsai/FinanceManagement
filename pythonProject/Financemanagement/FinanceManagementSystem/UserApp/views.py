@@ -6,9 +6,14 @@ def userhomepagecall(request):
     return render(request, 'UserApp/Userapphomepage.html')
 
 
-def balancecheckpagecall(request):
-    return render(request, 'UserApp/checkBalance.html')
+# views.py
+from django.shortcuts import render
+from .models import Transaction
 
+def balancecheckpagecall(request):
+    transactions = Transaction.objects.filter(user=request.user)
+    balance = sum(transaction.amount for transaction in transactions)
+    return render(request, 'UserApp/checkBalance.html', {'balance': balance, 'transactions': transactions})
 
 def addexpensepagecall(request):
     return render(request, 'UserApp/AddExpense.html')

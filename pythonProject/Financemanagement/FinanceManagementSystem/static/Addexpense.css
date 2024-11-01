@@ -1,0 +1,127 @@
+
+/* styles.css */
+body {
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+h1 {
+.navbar {
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    text-align: center;
+    margin-top: 20px;
+    color: #343a40;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #343a40;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form button {
+    width: 100%;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.nav-link {
+    font-size: 16px;
+}
+
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.nav-link {
+    font-size: 16px;
+}
+
+.nav-link:hover {
+    color: #0056b3;
+}
+
+.nav-link:hover {
+    color: #0056b3;
+}
+
+.navbar-nav .nav-item .nav-link {
+.navbar-nav .nav-item .nav-link {
+    padding: 10px 15px;
+}
+
+.navbar-nav .nav-item .nav-link.active {
+    padding: 10px 15px;
+}
+
+.navbar-nav .nav-item .nav-link.active {
+    font-weight: bold;
+    color: #007bff;
+}
+    font-weight: bold;
+    color: #007bff;
+}
