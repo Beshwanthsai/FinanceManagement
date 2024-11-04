@@ -58,22 +58,22 @@
     </nav>
     <div class="container mt-5" style="margin-top: 50px;">
         <h1 class="text-center" style="color: #4a90e2; font-weight: bold;">Add New Expense</h1>
-        <form method="post" action="{% url 'UserApp:add_expense' %}" class="p-4 p-md-5 border rounded-3 bg-light" style="max-width: 600px; margin: auto;">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="expenseName" class="form-label" style="color: #4a90e2; font-weight: bold;">Expense Name</label>
-                <input type="text" class="form-control" id="expenseName" name="expense_name" required>
-            </div>
-            <div class="mb-3">
-                <label for="expenseAmount" class="form-label" style="color: #4a90e2; font-weight: bold;">Amount</label>
-                <input type="number" class="form-control" id="expenseAmount" name="expense_amount" required>
-            </div>
-            <div class="mb-3">
-                <label for="expenseDate" class="form-label" style="color: #4a90e2; font-weight: bold;">Date</label>
-                <input type="date" class="form-control" id="expenseDate" name="expense_date" required>
-            </div>
-            <button type="submit" class="btn btn-primary w-100" style="background-color: #4a90e2; border: none;">Add Expense</button>
-        </form>
+    <form method="post" action="{% url 'UserApp:add_expense' %}" class="p-4 p-md-5 border rounded-3 bg-light" style="max-width: 600px; margin: auto;">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="expenseName" class="form-label" style="color: #4a90e2; font-weight: bold;">Expense Name</label>
+        <input type="text" class="form-control" id="expenseName" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="expenseAmount" class="form-label" style="color: #4a90e2; font-weight: bold;">Amount</label>
+        <input type="number" class="form-control" id="expenseAmount" name="amount" required>
+    </div>
+    <div class="mb-3">
+        <label for="expenseDate" class="form-label" style="color: #4a90e2; font-weight: bold;">Date</label>
+        <input type="date" class="form-control" id="expenseDate" name="date" required>
+    </div>
+    <button type="submit" class="btn btn-primary w-100" style="background-color: #4a90e2; border: none;">Add Expense</button>
+</form>
     </div>
 </body>
 </html>

@@ -7,10 +7,6 @@ def userhomepagecall(request):
 
 def addexpensepagecall(request):
     return render(request, 'UserApp/AddExpense.html')
-
-# here
-
-# views.py
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import Expense, Balance
@@ -20,7 +16,9 @@ def add_expense(request):
     if request.method == 'POST':
         form = ExpenseForm(request.POST)
         if form.is_valid():
-            form.save()
+            expense = form.save(commit=False)
+            expense.balance = Balance.objects.first()
+            expense.save()
             return redirect(reverse('UserApp:expense_list'))
     else:
         form = ExpenseForm()
@@ -29,7 +27,9 @@ def add_expense(request):
 def expense_list(request):
     expenses = Expense.objects.all()
     total_expenses = sum(expense.amount for expense in expenses)
-    return render(request, 'UserApp/ExpenceList.html', {'expenses': expenses, 'total_expenses': total_expenses})
+    balance = Balance.objects.first()
+    remaining_balance = balance.initial_balance - total_expenses if balance else 0
+    return render(request, 'UserApp/ExpenceList.html', {'expenses': expenses, 'total_expenses': total_expenses, 'remaining_balance': remaining_balance})
 
 def balancecheckpagecall(request):
     balance = Balance.objects.first()
