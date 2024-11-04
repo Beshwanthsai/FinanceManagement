@@ -48,3 +48,26 @@ def set_balance(request):
     else:
         form = BalanceForm()
     return render(request, 'UserApp/SetBalance.html', {'form': form})
+
+from django.shortcuts import render
+from django.db.models import Sum
+from .models import Expense
+from datetime import datetime
+
+from django.shortcuts import render
+from django.db.models import Sum
+from .models import Expense
+
+def expenses_by_month_form(request):
+    return render(request, 'UserApp/ExpensesByMonthForm.html')
+
+def expenses_by_month(request):
+    year = request.GET.get('year')
+    month = request.GET.get('month')
+    if year and month:
+        expenses = Expense.objects.filter(date__year=year, date__month=month)
+        total_amount = expenses.aggregate(Sum('amount'))['amount__sum'] or 0
+    else:
+        expenses = []
+        total_amount = 0
+    return render(request, 'UserApp/ExpensesByMonth.html', {'expenses': expenses, 'total_amount': total_amount, 'year': year, 'month': month})
