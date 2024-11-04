@@ -8,3 +8,9 @@ class Expense(models.Model):
 
     def __str__(self):
         return self.name
+
+class Balance(models.Model):
+    initial_balance = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return str(self.initial_balance)

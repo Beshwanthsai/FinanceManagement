@@ -10,5 +10,5 @@ urlpatterns = [
     path('addexpensepagecall/', views.addexpensepagecall, name='addexpensepagecall'),
     path('add_expense/', views.add_expense, name='add_expense'),
     path('expense_list/', views.expense_list, name='expense_list'),
-    path('add_transaction/', views.add_transaction, name='add_transaction'),  # Add this line
+    path('set_balance/', views.set_balance, name='set_balance'),
 ]
