@@ -1,5 +1,5 @@
 from django import forms
-from .models import Expense, Balance
+from .models import Expense, UserBalance  # Corrected import
 
 class ExpenseForm(forms.ModelForm):
     class Meta:
@@ -8,5 +8,5 @@ class ExpenseForm(forms.ModelForm):
 
 class BalanceForm(forms.ModelForm):
     class Meta:
-        model = Balance
-        fields = ['initial_balance']
+        model = UserBalance
+        fields = ['balance']
