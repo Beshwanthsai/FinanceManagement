@@ -21,13 +21,28 @@ def add_expense(request):
         form = ExpenseForm()
     return render(request, 'UserApp/AddExpense.html', {'form': form})
 
+
+from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import render
+from .models import UserBalance
+
+
 def expense_list(request):
     expenses = Expense.objects.filter(user=request.user)
     total_expenses = sum(expense.amount for expense in expenses)
-    user_balance = UserBalance.objects.get(user=request.user)
-    remaining_balance = user_balance.balance - total_expenses
-    return render(request, 'UserApp/ExpenceList.html', {'expenses': expenses, 'total_expenses': total_expenses, 'remaining_balance': remaining_balance})
 
+    try:
+        user_balance = UserBalance.objects.get(user=request.user)
+    except UserBalance.DoesNotExist:
+        user_balance = None  # or handle it in another way, e.g., create a new UserBalance object
+
+    remaining_balance = user_balance.balance - total_expenses if user_balance else 0
+
+    return render(request, 'UserApp/ExpenceList.html', {
+        'expenses': expenses,
+        'total_expenses': total_expenses,
+        'remaining_balance': remaining_balance
+    })
 def balancecheckpagecall(request):
     user_balance = UserBalance.objects.get(user=request.user)
     expenses = Expense.objects.filter(user=request.user)
