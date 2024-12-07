@@ -4,27 +4,85 @@
     <title>Expense List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style>
+        .navbar-custom {
+            background-color: #4a90e2;
+            padding: 10px 20px;
+        }
+        .navbar-custom .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .navbar-custom .nav-link {
+            color: #fff;
+            font-size: 1rem;
+        }
+        .navbar-custom .nav-link:hover {
+            color: #d1ecf1;
+        }
+        .expense-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 50px;
+        }
+        .expense-container h1 {
+            color: #4a90e2;
+            font-weight: bold;
+        }
+        .expense-item {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .expense-item:hover {
+            background-color: #e2e6ea;
+            transform: scale(1.02);
+        }
+        .expense-item h5 {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+        .expense-item p {
+            margin: 0;
+            color: #6c757d;
+        }
+        .btn-custom {
+            background-color: #4a90e2;
+            color: white;
+            height: 45px;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .btn-custom:hover {
+            background-color: #357ab8;
+        }
+    </style>
 </head>
 <body style="background-color: #f5f5f5; font-family: 'Roboto', sans-serif;">
-    <nav class="navbar navbar-expand-lg" style="background-color: #4a90e2;">
+    <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'UserApp:userhomepagecall' %}" style="font-weight: bold;">Finance Management</a>
+            <a class="navbar-brand" href="{% url 'UserApp:userhomepagecall' %}">Finance Management</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                           <a class="nav-link" href="{% url 'UserApp:userhomepagecall' %}" style="color: #fff;">HOMEPAGE</a>
+                           <a class="nav-link" href="{% url 'UserApp:userhomepagecall' %}">HOMEPAGE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'UserApp:balancecheckpagecall' %}" style="color: #fff;">Check Balance</a>
+                        <a class="nav-link" href="{% url 'UserApp:balancecheckpagecall' %}">Check Balance</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'UserApp:expense_list' %}" style="color: #fff;">Expense List</a>
+                        <a class="nav-link" href="{% url 'UserApp:expense_list' %}">Expense List</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fff;">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Finance Methods
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -41,45 +99,28 @@
                     <li class="nav-item">
                         <span class="nav-link" style="color: #fff;">Welcome, {{ user.username }}</span>
                     </li>
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link" href="{% url 'logout' %}" style="color: #fff;">Logout</a>#}
-{#                    </li>#}
                 {% else %}
                 {% endif %}
-                  
             </ul>
         </div>
     </nav>
-    <div class="container mt-5" style="margin-top: 50px;">
-        <h1 class="text-center" style="color: #4a90e2; font-weight: bold;">Expense List</h1>
+    <div class="container expense-container">
+        <h1 class="text-center">Expense List</h1>
         <div class="text-center">
             <h3>Remaining Balance: ${{ remaining_balance }}</h3>
         </div>
         <ul class="expense-list" style="list-style-type: none; padding: 0;">
             {% for expense in expenses %}
-                <li class="expense-item" style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; padding: 10px; margin-bottom: 10px; transition: background-color 0.3s, transform 0.3s;">
-                    <h5 style="margin: 0; font-size: 1.25rem;">{{ expense.name }}</h5>
-                    <p style="margin: 0; color: #6c757d;">Amount: ${{ expense.amount }}</p>
-                    <p style="margin: 0; color: #6c757d;">Date: {{ expense.date }}</p>
+                <li class="expense-item">
+                    <h5>{{ expense.name }}</h5>
+                    <p>Amount: ${{ expense.amount }}</p>
+                    <p>Date: {{ expense.date }}</p>
                 </li>
             {% endfor %}
         </ul>
     </div>
     <center>
-        <button class="btn" style="background-color:#4a90e2;color:white; height: 45px;" onclick="window.location.href='{% url 'UserApp:userhomepagecall' %}'">Return To Homepage</button>
+        <button class="btn btn-custom" onclick="window.location.href='{% url 'UserApp:userhomepagecall' %}'">Return To Homepage</button>
     </center>
-
-    <script>
-        document.querySelectorAll('.expense-item').forEach(item => {
-            item.addEventListener('mouseover', () => {
-                item.style.backgroundColor = '#e2e6ea';
-                item.style.transform = 'scale(1.02)';
-            });
-            item.addEventListener('mouseout', () => {
-                item.style.backgroundColor = '#f8f9fa';
-                item.style.transform = 'scale(1)';
-            });
-        });
-    </script>
 </body>
 </html>
