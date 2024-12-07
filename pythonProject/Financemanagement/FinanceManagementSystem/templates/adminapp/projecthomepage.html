@@ -40,7 +40,7 @@
 {% block body %}
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary" style="position: fixed; top: 0; width: 100%; z-index: 1000;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'homepagecall' %}" style="font-weight: bold;">
+            <a class="navbar-brand" href="{% url 'adminapp:homepagecall' %}" style="font-weight: bold;">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
                     <path d="M200-280v-280h80v280h-80Zm240 0v-280h80v280h-80ZM80-120v-80h800v80H80Zm600-160v-280h80v280h-80ZM80-640v-80l400-200 400 200v80H80Zm178-80h444-444Zm0 0h444L480-830 258-720Z"/>
                 </svg>
@@ -53,23 +53,8 @@
                     <li class="nav-item">
                         <h4 style="padding-top: 10px;"><b>Finance Management</b></h4>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'all_users_expenses' %}" style="padding-top: 14px; margin-left: 10px;">User Details</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'search_users' %}" style="padding-top: 14px; margin-left: 10px;">Search User</a>
-                    </li>
-                    <li class="nav-item dropdown" style="padding-top: 6px; margin-left: 10px;">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Finance Methods
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{% url 'UserApp:add_expense' %}">Add Expense</a></li>
-                            <li><a class="dropdown-item" href="{% url 'UserApp:balancecheckpagecall' %}">Check Balance</a></li>
-                            <li><a class="dropdown-item" href="{% url 'UserApp:expense_list' %}">Expense List</a></li>
-                            <li><a class="dropdown-item" href="{% url 'UserApp:set_balance' %}">Set Balance</a></li>
-                        </ul>
-                    </li>
+
+                   
                 </ul>
             </div>
             <ul class="navbar-nav ms-auto">
@@ -78,15 +63,15 @@
                         <span class="nav-link">Welcome, {{ user.username }}</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        <a class="nav-link" href="{% url 'adminapp:logout' %}">Logout</a>
                     </li>
                 {% else %}
                 {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'Registerpagecall' %}"><b>Register</b></a>
+                        <a class="nav-link" href="{% url 'adminapp:Registerpagecall' %}"><b>Register</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'Loginpagecall' %}"><b>Login</b></a>
+                        <a class="nav-link" href="{% url 'adminapp:Loginpagecall' %}"><b>Login</b></a>
                     </li>
             </ul>
         </div>

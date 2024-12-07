@@ -103,7 +103,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'homepagecall' %}">Finance Management</a>
+            <a class="navbar-brand" href="{% url 'adminapp:homepagecall' %}">Finance Management</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -130,7 +130,7 @@
 
     <div class="container">
         <h1 class="text-center" style="color: #4a90e2; font-weight: bold;">Search Users</h1>
-        <form method="get" action="{% url 'search_users' %}" class="search-form">
+        <form method="get" action="{% url 'adminapp:search_users' %}" class="search-form">
             <div class="input-group">
                 <input type="text" name="query" class="form-control" placeholder="Search for users..." required>
                 <button type="submit" class="btn btn-primary">Search</button>

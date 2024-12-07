@@ -88,7 +88,7 @@
 <body>
     <div class="container">
         <div class="heading">Sign In</div>
-        <form action="{% url 'UserLoginLogic' %}" class="form" method="post">
+        <form action="{% url 'adminapp:UserLoginLogic' %}" class="form" method="post">
             {% csrf_token %}
             <input required="" class="input" name="username" type="text" id="email" placeholder="Username">
             <input required="" class="input" name="password" type="password" id="password" placeholder="Password">

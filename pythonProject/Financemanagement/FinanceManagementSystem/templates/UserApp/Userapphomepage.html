@@ -104,7 +104,7 @@
                         <span class="nav-link">Welcome, {{ user.username }}</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        <a class="nav-link" href="{% url 'adminapp:logout' %}">Logout</a>
                     </li>
                 {% else %}
                 {% endif %}

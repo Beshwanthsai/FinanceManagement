@@ -16,30 +16,28 @@ def UserLoginLogic(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        # Authenticate the user
+        # Debug: Print the username and password
+        print(f"Username: {username}, Password: {password}")
+
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            # Check the length of the username
+            # Debug: Print the user type based on username length
+            print(f"User authenticated: {user.username}, Length: {len(username)}")
             if len(username) == 10:
-                # Redirect to StudentHomePage
                 messages.success(request, 'Login successful as User!')
                 return redirect('UserApp:userhomepagecall')
             elif len(username) == 4:
-                # Redirect to FacultyHomePage
                 messages.success(request, 'Login successful as Finance Manager!')
-                return redirect('UserApp:userhomepagecall')
+                return redirect('adminapp:homepagecall')
             else:
-                # Invalid username length
                 messages.error(request, 'Username length does not match student or faculty criteria.')
                 return render(request, 'adminapp/Login.html')
         else:
-            # If authentication fails
             messages.error(request, 'Invalid username or password.')
             return render(request, 'adminapp/Login.html')
     else:
         return render(request, 'adminapp/Login.html')
-
 def Registerpagecall(request):
     return render(request, 'adminapp/Register.html')
 
@@ -78,7 +76,7 @@ def UserRegisterLogic(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('homepagecall')
+    return redirect('adminapp:homepagecall')
 
 from django.shortcuts import render
 from UserApp.models import User, Expense, UserBalance
