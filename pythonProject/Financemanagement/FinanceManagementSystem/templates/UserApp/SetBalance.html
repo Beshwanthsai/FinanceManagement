@@ -55,25 +55,25 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" style="background-color: #4a90e2;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'UserApp:userhomepagecall' %}">Finance Management</a>
+            <a class="navbar-brand" href="{% url 'UserApp:userhomepagecall' %}" style="font-weight: bold;">Finance Management</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                       <a class="nav-link" href="{% url 'UserApp:userhomepagecall' %}" style="color: #fff;">HOMEPAGE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'UserApp:balancecheckpagecall' %}">Check Balance</a>
+                        <a class="nav-link" href="{% url 'UserApp:balancecheckpagecall' %}" style="color: #fff;">Check Balance</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'UserApp:expense_list' %}">Expense List</a>
+                        <a class="nav-link" href="{% url 'UserApp:expense_list' %}" style="color: #fff;">Expense List</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fff;">
                             Finance Methods
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -88,19 +88,14 @@
             <ul class="navbar-nav ms-auto">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <span class="nav-link">Welcome, {{ user.username }}</span>
+                        <span class="nav-link" style="color: #fff;">Welcome, {{ user.username }}</span>
                     </li>
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>#}
-{#                    </li>#}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}" style="color: #fff;">Logout</a>
+                    </li>
                 {% else %}
                 {% endif %}
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link" href="{% url 'Loginpagecall' %}">Login</a>#}
-{#                    </li>#}
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link" href="{% url 'Registerpagecall' %}">Register</a>#}
-{#                    </li>#}
+                 
             </ul>
         </div>
     </nav>
