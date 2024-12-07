@@ -49,21 +49,57 @@
     <div class="container mt-5" style="margin-top: 50px;">
         <h1 class="text-center" style="color: #4a90e2; font-weight: bold;">Welcome to Finance Management</h1>
         <p class="text-center" style="color: #333;">Manage your finances effectively with our tools.</p>
-        <div class="row text-center">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/finance1.jpg' %}" class="d-block w-100" alt="Finance Image 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/finance2.jpg' %}" class="d-block w-100" alt="Finance Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/finance3.jpg' %}" class="d-block w-100" alt="Finance Image 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="row text-center mt-4">
             <div class="col-md-3 col-sm-6 mb-4">
-                <a href="{% url 'UserApp:add_expense' %}" class="btn btn-primary btn-lg w-100" style="background-color: #4a90e2; border: none;">Add Expense</a>
+                <a href="{% url 'UserApp:add_expense' %}" class="btn btn-primary btn-lg w-100" style="background-color: #4a90e2; border: none;">
+                    <i class="bi bi-plus-circle"></i> Add Expense
+                </a>
             </div>
             <div class="col-md-3 col-sm-6 mb-4">
-                <a href="{% url 'UserApp:balancecheckpagecall' %}" class="btn btn-primary btn-lg w-100" style="background-color: #4a90e2; border: none;">Check Balance</a>
+                <a href="{% url 'UserApp:balancecheckpagecall' %}" class="btn btn-primary btn-lg w-100" style="background-color: #4a90e2; border: none;">
+                    <i class="bi bi-wallet2"></i> Check Balance
+                </a>
             </div>
             <div class="col-md-3 col-sm-6 mb-4">
-                <a href="{% url 'UserApp:expense_list' %}" class="btn btn-primary btn-lg w-100" style="background-color: #4a90e2; border: none;">Expense List</a>
+                <a href="{% url 'UserApp:expense_list' %}" class="btn btn-primary btn-lg w-100" style="background-color: #4a90e2; border: none;">
+                    <i class="bi bi-list-ul"></i> Expense List
+                </a>
             </div>
             <div class="col-md-3 col-sm-6 mb-4">
-                <a href="{% url 'UserApp:set_balance' %}" class="btn btn-primary btn-lg w-100" style="background-color: #4a90e2; border: none;">Set Balance</a>
+                <a href="{% url 'UserApp:set_balance' %}" class="btn btn-primary btn-lg w-100" style="background-color: #4a90e2; border: none;">
+                    <i class="bi bi-gear"></i> Set Balance
+                </a>
             </div>
             <div class="col-md-3 col-sm-6 mb-4">
-                <a href="{% url 'UserApp:expenses_by_month_form' %}" class="btn btn-primary btn-lg w-100" style="background-color: #4a90e2; border: none;">View Expenses by Month</a>
+                <a href="{% url 'UserApp:expenses_by_month_form' %}" class="btn btn-primary btn-lg w-100" style="background-color: #4a90e2; border: none;">
+                    <i class="bi bi-calendar"></i> View Expenses by Month
+                </a>
             </div>
         </div>
     </div>
