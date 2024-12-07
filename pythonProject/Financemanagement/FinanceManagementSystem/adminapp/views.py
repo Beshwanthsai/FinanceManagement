@@ -29,7 +29,7 @@ def UserLoginLogic(request):
                 return redirect('UserApp:userhomepagecall')
             elif len(username) == 4:
                 messages.success(request, 'Login successful as Finance Manager!')
-                return redirect('adminapp:homepagecall')
+                return redirect('adminapp:adminapphomepage')
             else:
                 messages.error(request, 'Username length does not match student or faculty criteria.')
                 return render(request, 'adminapp/Login.html')
@@ -127,3 +127,6 @@ def search_users(request):
         'user_expenses': user_expenses,
         'total_expenses': total_expenses
     })
+
+def adminapphomepage(request):
+    return render(request, 'adminapp/adminapphomepage.html')
