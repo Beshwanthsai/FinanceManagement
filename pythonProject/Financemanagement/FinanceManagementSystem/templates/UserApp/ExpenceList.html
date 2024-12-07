@@ -65,6 +65,10 @@
             {% endfor %}
         </ul>
     </div>
+    <center>
+        <button class="btn" style="background-color:#4a90e2;color:white; height: 45px;" onclick="window.location.href='{% url 'UserApp:userhomepagecall' %}'">Return To Homepage</button>
+    </center>
+
     <script>
         document.querySelectorAll('.expense-item').forEach(item => {
             item.addEventListener('mouseover', () => {
