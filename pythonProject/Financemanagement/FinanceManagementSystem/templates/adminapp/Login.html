@@ -1,31 +1,109 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDEwfHxjYWxmb3JuaWF8ZW58MHx8fHwxNjI1ODkxMzQ5&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center fixed; 
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 25px 35px;
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .heading {
+            font-weight: bold;
+            font-size: 40px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            height: 40px;
+            margin-bottom: 15px;
+            padding: 10px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .login-button {
+            display: block;
+            width: 100%;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #556bff);
+            color: white;
+            padding: 15px;
+            margin: 20px auto;
+            border-radius: 25px;
+            border: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .login-button:hover {
+            background: linear-gradient(45deg, #ff4757, #3742fa);
+            transform: translateY(-3px);
+        }
+
+        .forgot-password a {
+            font-size: 12px;
+            color: #3742fa;
+            text-decoration: none;
+        }
+
+        .messages {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0 0;
+            font-size: 14px;
+        }
+
+        .messages li {
+            padding: 10px;
+            border: 1px solid;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-
-<center>
-    <div class="container" style="max-width: 500px; background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(244, 247, 251) 100%); border-radius: 40px; padding: 25px 35px; border: 9px solid rgb(255, 255, 255); box-shadow: rgba(195,188,190,0.87) 1px 1px 9px 9px; margin-top: 230px;">
-        <div class="heading" style="text-align: center; font-weight: 960; font-size: 40px; color: rgb(12,14,14);">Sign In</div>
-        <form action="{% url 'UserLoginLogic' %}" class="form" method="post" style="margin-top: 30px;">
+    <div class="container">
+        <div class="heading">Sign In</div>
+        <form action="{% url 'UserLoginLogic' %}" class="form" method="post">
             {% csrf_token %}
-            <input required="" class="input" name="username" type="text" id="email" placeholder="Username" style="width: 100%; background: #fdfcfc; border: none; border-radius: 20px; box-shadow: #2f7fa3 0px 10px 10px -5px; border-inline: 9px solid transparent;height: 30px; margin-bottom: 10px;">
-            <input required="" class="input" name="password" type="password" id="password" placeholder="Password" style="width: 100%; background: #fbfbfb; border: none; border-radius: 20px; box-shadow: #337e9f 0px 10px 10px -5px;height: 30px; border-inline: 9px solid transparent; margin-bottom: 10px;">
-            <span class="forgot-password" style="display: block; margin-top: 10px; margin-left: 10px;"><a href="#" style="font-size: 11px; color: #2191d1; text-decoration: none;">Forgot Password ?</a></span>
-            <input class="login-button" type="submit" value="Sign In" style="display: block; width: 100%; font-weight: bold; background: linear-gradient(45deg, rgb(211,16,75) 0%, rgb(18, 177, 209) 100%); color: white; padding-block: 15px; margin: 20px auto; border-radius: 20px; box-shadow: rgba(133, 189, 215, 0.878) 0px 20px 10px -15px; border: none; transition: all 0.2s ease-in-out;">
+            <input required="" class="input" name="username" type="text" id="email" placeholder="Username">
+            <input required="" class="input" name="password" type="password" id="password" placeholder="Password">
+            <span class="forgot-password"><a href="#">Forgot Password?</a></span>
+            <input class="login-button" type="submit" value="Sign In">
         </form>
         {% if messages %}
-        <ul class="messages" style="list-style-type: none; padding: 0; margin: 20px 0 0; font-size: 14px;">
+        <ul class="messages">
             {% for message in messages %}
-            <li class="{{ message.tags }}" style="padding: 10px; border: 1px solid; border-radius: 3px; margin-bottom: 10px;">
+            <li class="{{ message.tags }}">
                 {{ message }}
             </li>
             {% endfor %}
         </ul>
         {% endif %}
     </div>
-</center>
-
 </body>
 </html>
