@@ -101,3 +101,31 @@ def all_users_expenses(request):
             'remaining_balance': remaining_balance
         })
     return render(request, 'adminapp/all_users_expenses.html', {'users_data': users_data})
+
+# views.py
+from django.shortcuts import render
+from django.contrib.auth.models import User
+from UserApp.models import Expense
+
+def search_users(request):
+    query = request.GET.get('query')
+    users = User.objects.none()  # Default to an empty queryset
+    no_results = False
+    user_expenses = None
+    total_expenses = 0
+
+    if query:
+        users = User.objects.filter(username__icontains=query) | User.objects.filter(email__icontains=query) | User.objects.filter(first_name__icontains=query) | User.objects.filter(last_name__icontains=query)
+        if not users.exists():
+            no_results = True
+        elif users.count() == 1:
+            user = users.first()
+            user_expenses = Expense.objects.filter(user=user)
+            total_expenses = sum(expense.amount for expense in user_expenses)
+
+    return render(request, 'adminapp/search_users.html', {
+        'users': users,
+        'no_results': no_results,
+        'user_expenses': user_expenses,
+        'total_expenses': total_expenses
+    })
