@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Management</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'card.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .modal-content {
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .modal-header {
+            background-color: #4a90e2;
+            color: #fff;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .modal-body {
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        .modal-footer {
+            justify-content: center;
+        }
+        .btn-primary {
+            background-color: #4a90e2;
+            border-color: #4a90e2;
+        }
+        .btn-primary:hover {
+            background-color: #357ab8;
+            border-color: #357ab8;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding-top: 70px; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: snow; background-image: url('https://media.licdn.com/dms/image/D5612AQGplp7JKG6Iiw/article-cover_image-shrink_720_1280/0/1673950361361?e=2147483647&v=beta&t=NxzErCoXqQ-xwkHJZZkKGKYNA21hJh3oNMUJzNKQr9M'); background-size: cover;">
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary" style="position: fixed; top: 0; width: 100%; z-index: 1000;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'adminapp:homepagecall' %}" style="font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                    <path d="M200-280v-280h80v280h-80Zm240 0v-280h80v280h-80ZM80-120v-80h800v80H80Zm600-160v-280h80v280h-80ZM80-640v-80l400-200 400 200v80H80Zm178-80h444-444Zm0 0h444L480-830 258-720Z"/>
+                </svg>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <h4 style="padding-top: 10px;"><b>Finance Management</b></h4>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'adminapp:all_users_expenses' %}" style="padding-top: 14px; margin-left: 10px;">User Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'adminapp:search_users' %}" style="padding-top: 14px; margin-left: 10px;">Search User</a>
+                    </li>
+                    <li class="nav-item dropdown" style="padding-top: 6px; margin-left: 10px;">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Finance Methods
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="{% url 'UserApp:add_expense' %}">Add Expense</a></li>
+                            <li><a class="dropdown-item" href="{% url 'UserApp:balancecheckpagecall' %}">Check Balance</a></li>
+                            <li><a class="dropdown-item" href="{% url 'UserApp:expense_list' %}">Expense List</a></li>
+                            <li><a class="dropdown-item" href="{% url 'UserApp:set_balance' %}">Set Balance</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <span class="nav-link">Welcome, {{ user.username }}</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'adminapp:logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'adminapp:Registerpagecall' %}"><b>Register</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'adminapp:Loginpagecall' %}"><b>Login</b></a>
+                    </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Modal -->
+    <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="welcomeModalLabel">Welcome</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Welcome to the Finance Management System!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+            welcomeModal.show();
+        });
+    </script>
+{% endblock %}
+</body>
+</html>
