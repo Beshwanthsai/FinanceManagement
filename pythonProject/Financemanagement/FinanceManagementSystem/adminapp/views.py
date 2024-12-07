@@ -79,3 +79,25 @@ def UserRegisterLogic(request):
 def logout_view(request):
     logout(request)
     return redirect('homepagecall')
+
+from django.shortcuts import render
+from UserApp.models import User, Expense, UserBalance
+
+def all_users_expenses(request):
+    users_data = []
+    users = User.objects.all()
+    for user in users:
+        expenses = Expense.objects.filter(user=user)
+        total_expenses = sum(expense.amount for expense in expenses)
+        try:
+            user_balance = UserBalance.objects.get(user=user)
+        except UserBalance.DoesNotExist:
+            user_balance = None
+        remaining_balance = user_balance.balance - total_expenses if user_balance else 0
+        users_data.append({
+            'user': user,
+            'expenses': expenses,
+            'total_expenses': total_expenses,
+            'remaining_balance': remaining_balance
+        })
+    return render(request, 'adminapp/all_users_expenses.html', {'users_data': users_data})
